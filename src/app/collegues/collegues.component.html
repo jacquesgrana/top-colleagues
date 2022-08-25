@@ -1,1 +1,18 @@
-<p>collegues works!</p>
+<h1>Ici un template</h1>
+<!-- [] => binding de propriété-->
+<img [src]="uneImage" height="140px" width="140px" alt="une Image par binding">
+<br>
+<!-- *=> directive de structure d'angular -->
+<p *ngIf="unChamp">
+      <!-- {{ }} =>interpolation l'affichage d'une variable ou
+      d'un retour d'une méthode par exemple -->
+      {{ unChamp }} <br>
+      <!-- pipe => ça permet de transformer l'affichage de la donnée -->
+      {{ unChamp | uppercase}}
+</p>
+<!-- Je déclare une variable locale dans la vue -->
+<input type="text" #saisie>
+<!-- () => lié à un événement -->
+<button (click)="mClique(saisie.value)">Evt</button>
+<br>
+<input type="text" [(ngModel)]="saisieTwoWay"><br>{{saisieTwoWay}}

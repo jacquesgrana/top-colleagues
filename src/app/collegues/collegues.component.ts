@@ -1,31 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'tc-collegues',
-  template: ` <h1>Ici un template</h1>
-              <!-- [] => binding de propriété-->
-              <img [src]="uneImage" alt="une Image par binding" [ngClass]="'logo'">
-
-              <!-- *=> directive de structure d'angular -->
-              <p *ngIf="unChamp">
-                    <!-- {{ }} =>interpolation l'affichage d'une variable ou
-                    d'un retour d'une méthode par exemple -->
-                    {{ unChamp }}
-                    <!-- pipe => ça permet de transformer l'affichage de la donnée -->
-                    {{ unChamp | uppercase}}
-              </p>
-  `,
-  styleUrls: [ './collegues.component.scss' ]
+  templateUrl: "./collegues.component.html"
 })
-
 export class ColleguesComponent implements OnInit {
 
-  uneImage = "assets/logo.jpg";
-  unChamp = 'je suis un champ ts';
+  /**
+   * déclaration d'une entrée (input) [nom]
+   * pour notre composant [nom]=
+   * [prenom]="" tc-coll
+   */
+
+  @Input() nom: string = "";
+
+
+  /**
+  * Je déclare une entrée [nom] pour notre composant
+  * <tc-collegues [nom]= "" [prenom]=""></tc-collegues>
+  */
+  @Input("prenom") monPrenom !: string;
+
+
+  @Output() chgPrenom : EventEmitter<string> = new EventEmitter<string>();
+
+  uneImage = "/assets/logo.jpg";
+  unChamp !: string; //'je suis un champ ts';
+
+  /**
+   * depuis ANGULAR v10 car on doit affecter la variable
+   * soit a la declaration soit dans le constructeur
+   */
+  saisieTwoWay: string = "valeur par défaut";
 
   constructor() { }
 
+
+
   ngOnInit(): void {
+    this.saisieTwoWay = this.nom;
+    console.log(this.monPrenom);
   }
 
+  mClique(valeurSaisie:string) {
+    this.unChamp = valeurSaisie;
+    this.chgPrenom.emit(this.unChamp);
+    console.log('clic bien reçu : ', valeurSaisie);
+  }
 }

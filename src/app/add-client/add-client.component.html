@@ -1,0 +1,46 @@
+<div class="container">
+
+  <h1 class="mt-4" >Ajouter un Client</h1>
+
+
+
+      <label class="badge bg-info mt-4">Nom : </label>
+
+      <input type="text" class="form-control" [(ngModel)]="personne.nom">
+
+      <!-- <span >{{nomUtilisateur}}</span> -->
+
+
+
+      <label class="badge bg-info mt-4">Prénom : </label>
+
+      <input type="text" class="form-control" [(ngModel)]="personne.prenom">
+
+      <!-- <span >{{prenomUtilisateur}}</span> -->
+
+
+
+      <label class="badge bg-info mt-4">Adresse : </label>
+
+      <input type="text" class="form-control" [(ngModel)]="personne.adresse">
+
+      <!-- <span >{{adresseUtilisateur}}</span> -->
+
+
+    <button class="btn btn-primary mt-4" (click)="ajoutUtil()">Ajouter</button>
+
+    <hr>
+    <table class="table table-success table-striped">
+      <thead>
+        <tr><th>Nom</th><th>Prénom</th><th>Adresse</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users">
+          <td>{{item.nom}}</td>
+          <td>{{item.prenom}}</td>
+          <td>{{item.adresse}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+</div>

@@ -1,5 +1,29 @@
-<tc-collegues></tc-collegues>
+<!--
+<tc-collegues
+ [nom]="'Germain'"
+ (chgPrenom)="callChgPrenom($event)"
+ >
+ </tc-collegues>
+-->
+<!--
+  Je peux écrire la ligne suivante :  nom='Martin' car
+  @Input() nom: string
+-->
+<!--
+<tc-collegues
+nom='Martin'
+prenom="prenom"
+(chgPrenom)="callChgPrenom($event)"
+>
+</tc-collegues>
+-->
 
-<!-- 1 instance du composant collegues-->
+<!-- <tc-add-client></tc-add-client> -->
 
 
+<div class="container">
+
+
+  <tc-colleague-list></tc-colleague-list>
+
+</div>
